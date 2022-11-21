@@ -33,27 +33,3 @@ const LogoNav = () => {
 }
 
 export default LogoNav
-
-// import React from 'react'
-// import LogoNav from './LogoNav'
-// import Login from './Login'
-// import Logout from './Logout'
-// import { useStore } from 'react-redux'
-// import { useState } from 'react'
-// import { useLocation } from 'react-router-dom'
-
-// const Header = () => {
-//   const currentPage = useLocation().pathname
-//   console.log(currentPage)
-//   const [isToken, setIsToken] = useState(false)
-//   const store = useStore()
-//   store.subscribe(() => {
-//     setIsToken(store.getState().user?.token?.length)
-//   })
-//   return (
-//     <div className="main-nav">
-//       <LogoNav />
-//       <div className="main-nav-choice">{isToken ? <Logout /> : <Login />}</div>
-//     </div>
-//   )
-// }

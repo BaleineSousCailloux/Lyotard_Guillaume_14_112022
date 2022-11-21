@@ -4,3 +4,7 @@
     left: -10px;;
     width: 50%;
 }
+
+.input-wrapper {
+    max-width: 400px;
+}
