@@ -1,5 +1,6 @@
 .Dropdown-root {
   position: relative;
+  width: 100%
 
 }
 
@@ -7,18 +8,17 @@
   position: relative;
   overflow: hidden;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 2px;
   box-sizing: border-box;
-  color: #333;
   cursor: default;
   outline: none;
   padding: 8px 52px 8px 10px;
   transition: all 200ms ease;
+  height: 40px;
+  width: 100%;
 }
 
 .Dropdown-control:hover {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .Dropdown-arrow {
@@ -51,7 +51,7 @@
   position: absolute;
   top: 100%;
   width: 100%;
-  z-index: 1000;
+  z-index: 1;
   -webkit-overflow-scrolling: touch;
 }
 
