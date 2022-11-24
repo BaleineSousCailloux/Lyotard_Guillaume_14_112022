@@ -7,21 +7,18 @@ import '../styles/DatePicker.css'
 import '../styles/Calendar.css'
 import Dropdown from 'react-dropdown'
 import '../styles/Dropdown.css'
-import { useDispatch } from 'react-redux'
 import { updateEmployeesList } from '../stores/employeesStore'
 
-function SignInForm() {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+function CreateEmployeeForm() {
+  const [firstName, setFirstName] = useState('first')
+  const [lastName, setLastName] = useState('last')
   const [birthDate, setBirthDate] = useState('')
   const [startDate, setStartDate] = useState(new Date())
-  const [street, setStreet] = useState('')
-  const [city, setCity] = useState('')
-  const [stateName, setStateName] = useState('')
-  const [zipCode, setZipCode] = useState('')
-  const [department, setDepartment] = useState('')
-
-  const dispatch = useDispatch()
+  const [street, setStreet] = useState('lombard')
+  const [city, setCity] = useState('San-Francisco')
+  const [stateName, setStateName] = useState('CA')
+  const [zipCode, setZipCode] = useState('25000')
+  const [department, setDepartment] = useState('Sales')
 
   const submitForm = () => {
     const newEmployee = {
@@ -34,7 +31,7 @@ function SignInForm() {
       zipCode,
       department,
     }
-    dispatch(updateEmployeesList(newEmployee))
+    updateEmployeesList(newEmployee)
   }
 
   return (
@@ -65,7 +62,7 @@ function SignInForm() {
               type="date"
               id="birthDate"
               value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
+              onChange={(e) => setBirthDate(e)}
             />
           </div>
           <div className="input-wrapper">
@@ -74,7 +71,7 @@ function SignInForm() {
               type="date"
               id="startDate"
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={(e) => setStartDate(e)}
             />
           </div>
         </div>
@@ -114,7 +111,7 @@ function SignInForm() {
           <div className="input-wrapper">
             <label htmlFor="zipCode">Zip Code</label>
             <input
-              type="number"
+              type="text"
               id="zipCode"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
@@ -136,7 +133,7 @@ function SignInForm() {
             onChange={(e) => setDepartment(e.value)}
           />
         </div>
-        <button className="validate" title="save" action={submitForm}>
+        <button className="validate" title="save" onClick={submitForm}>
           SAVE
         </button>
       </div>
@@ -144,4 +141,4 @@ function SignInForm() {
   )
 }
 
-export default SignInForm
+export default CreateEmployeeForm

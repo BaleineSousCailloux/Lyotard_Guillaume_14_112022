@@ -4,3 +4,33 @@
     right: -10px;;
     width: 50%;
 }
+.bg-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.data-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.my-table {
+    height: fit-content;
+    width: 955px;
+    margin-top: 1.5em;
+}
+.my-table-content {
+    border-radius: 5px;
+    height: fit-content;
+    max-height: 420px;
+    width:100%;
+    overflow: hidden;
+}
+.pageOptions {
+    color: white;
+}
+.search-bar {
+    width: 300px;
+    align-self: end;
+    margin-top: 3em;
+}
