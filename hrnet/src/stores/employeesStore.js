@@ -1,39 +1,38 @@
 import { combineReducers, createStore } from 'redux'
 import { produce } from 'immer'
-import { reducer as sematable } from 'sematable'
 
 // state
 const initialState = {
   employeesList: [
     {
       city: 'San Francisco',
-      birthDate: '10/02/1965',
+      dateBirth: '10/02/1965',
       department: 'Engineering',
       firstName: 'Bruce',
       lastName: 'Willis',
-      startDate: '10/02/1965',
+      dateStart: '02/10/1965',
       stateName: 'CO',
       street: 'Lombard',
       zipCode: '102302',
     },
     {
       city: 'Miami',
-      birthDate: '21/11/1972',
+      dateBirth: '21/11/1972',
       department: 'Human Resources',
       firstName: 'Jason',
       lastName: 'Statham',
-      startDate: '21/11/1972',
+      dateStart: '11/21/1972',
       stateName: 'FL',
       street: 'Ocean Side',
       zipCode: '2310',
     },
     {
       city: 'New York',
-      birthDate: '06/01/1968',
+      dateBirth: '06/01/1968',
       department: 'Engineering',
       firstName: 'Tom',
       lastName: 'Cruise',
-      startDate: '06/01/1968',
+      dateStart: '01/06/1968',
       stateName: 'GA',
       street: '5th Avenue',
       zipCode: '53002',
@@ -65,7 +64,6 @@ function employeesReducer(state = initialState, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case CREATE_EMPLOYEE: {
-        console.log(action.payload)
         console.log(draft.employeesList)
         draft.employeesList.push(action.payload)
         return
@@ -84,7 +82,6 @@ function employeesReducer(state = initialState, action) {
 // fonctionner plusieurs reducers ensemble comme l'ajout des transactions
 const reducer = combineReducers({
   employees: employeesReducer,
-  sematable,
 })
 
 // redux devtools

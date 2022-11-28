@@ -1,17 +1,19 @@
 import React from 'react'
 import { useStore } from 'react-redux'
 import { Table, Pagination, Input, InputGroup } from 'rsuite'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import SearchIcon from '@rsuite/icons/Search'
 
 function EmployeesTable() {
   const store = useStore()
+  const searchInput = useRef(null)
   const { Column, HeaderCell, Cell } = Table
   const datas = store.getState().employees.employeesList
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
   const [sortColumn, setSortColumn] = useState()
   const [sortType, setSortType] = useState()
+  const [searchData, setSearchData] = useState()
   const [loading, setLoading] = useState(false)
   const handleChangeLimit = (dataKey) => {
     setPage(1)
@@ -52,19 +54,34 @@ function EmployeesTable() {
     }, 500)
   }
 
+  const handleSearchClick = () => {
+    setSearchData(searchInput.current.value)
+  }
+
   return (
     <div className="data-table">
       <div className="search-bar">
         <InputGroup size="md">
-          <Input />
-          <InputGroup.Button>
+          <Input
+            ref={searchInput}
+            type="text"
+            id="searchData"
+            name="searchData"
+          />
+          <InputGroup.Button
+            onClick={() => {
+              handleSearchClick()
+            }}
+          >
             <SearchIcon />
           </InputGroup.Button>
         </InputGroup>
       </div>
       <div className="my-table">
         <Table
+          autoHeight
           className="my-table-content"
+          id="table"
           data={getData()}
           sortColumn={sortColumn}
           sortType={sortType}
@@ -83,7 +100,7 @@ function EmployeesTable() {
 
           <Column width={100} align="left" fixed sortable>
             <HeaderCell>Start Date</HeaderCell>
-            <Cell dataKey="startDate" />
+            <Cell dataKey="dateStart" />
           </Column>
 
           <Column width={135} align="left" fixed sortable>
@@ -92,7 +109,7 @@ function EmployeesTable() {
           </Column>
           <Column width={115} align="left" fixed sortable>
             <HeaderCell>Date of Birth</HeaderCell>
-            <Cell dataKey="birthDate" />
+            <Cell dataKey="dateBirth" />
           </Column>
           <Column width={110} align="left" fixed sortable>
             <HeaderCell>Street</HeaderCell>

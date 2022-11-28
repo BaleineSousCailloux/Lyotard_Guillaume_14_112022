@@ -8,6 +8,8 @@ import '../styles/Calendar.css'
 import Dropdown from 'react-dropdown'
 import '../styles/Dropdown.css'
 import { updateEmployeesList } from '../stores/employeesStore'
+import { formatDate } from '../utils/formatDate'
+import Modal from './Modal'
 
 function CreateEmployeeForm() {
   const [firstName, setFirstName] = useState('first')
@@ -21,13 +23,16 @@ function CreateEmployeeForm() {
   const [department, setDepartment] = useState('Sales')
 
   const submitForm = () => {
+    const dateStart = formatDate(startDate)
+    const dateBirth = formatDate(birthDate)
     const newEmployee = {
       firstName,
       lastName,
-      birthDate,
-      startDate,
+      dateBirth,
+      dateStart,
       street,
       stateName,
+      city,
       zipCode,
       department,
     }
@@ -136,6 +141,7 @@ function CreateEmployeeForm() {
         <button className="validate" title="save" onClick={submitForm}>
           SAVE
         </button>
+        <Modal message="Employee Created !" isShowing={true} />
       </div>
     </div>
   )
