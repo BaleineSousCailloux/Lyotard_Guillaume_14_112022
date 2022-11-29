@@ -8,7 +8,7 @@ import '../styles/Calendar.css'
 import Dropdown from 'react-dropdown'
 import '../styles/Dropdown.css'
 import { updateEmployeesList } from '../stores/employeesStore'
-import Modal from './Modal'
+import Modal from 'modal-pkg'
 import { useEffect } from 'react'
 
 function CreateEmployeeForm() {
