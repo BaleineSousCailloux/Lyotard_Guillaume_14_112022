@@ -8,27 +8,40 @@ import '../styles/Calendar.css'
 import Dropdown from 'react-dropdown'
 import '../styles/Dropdown.css'
 import { updateEmployeesList } from '../stores/employeesStore'
-import { formatDate } from '../utils/formatDate'
 import Modal from './Modal'
+import { useEffect } from 'react'
 
 function CreateEmployeeForm() {
-  const [firstName, setFirstName] = useState('first')
-  const [lastName, setLastName] = useState('last')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [birthDate, setBirthDate] = useState('')
   const [startDate, setStartDate] = useState(new Date())
-  const [street, setStreet] = useState('lombard')
-  const [city, setCity] = useState('San-Francisco')
-  const [stateName, setStateName] = useState('CA')
-  const [zipCode, setZipCode] = useState('25000')
-  const [department, setDepartment] = useState('Sales')
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [stateName, setStateName] = useState('')
+  const [zipCode, setZipCode] = useState('')
+  const [department, setDepartment] = useState('')
   const [modalIsShowing, setModalIsShowing] = useState(false)
+  const [formOk, setFormOk] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('sr-only')
 
   const submitForm = () => {
-    if (firstName && lastName && startDate && birthDate) {
+    if (
+      firstName &&
+      lastName &&
+      street &&
+      stateName &&
+      city &&
+      zipCode &&
+      department &&
+      startDate &&
+      birthDate
+    ) {
+      setErrorMessage('sr-only')
+
       const dateStart = startDate?.getTime()
       const dateBirth = birthDate?.getTime()
 
-      console.log(dateStart)
       const newEmployee = {
         firstName,
         lastName,
@@ -42,11 +55,24 @@ function CreateEmployeeForm() {
       }
       updateEmployeesList(newEmployee)
       setModalIsShowing(true)
+      setFormOk(true)
     } else {
-      //useState message d'erreur
+      setFormOk(false)
+      setErrorMessage('error-message')
     }
   }
-
+  useEffect(() => {
+    if (formOk === true) {
+      setFirstName('')
+      setLastName('')
+      setBirthDate('')
+      setStreet('')
+      setCity('')
+      setStateName('')
+      setZipCode('')
+      setDepartment('')
+    }
+  }, [formOk])
   return (
     <div className="form">
       <div className="form-private">
@@ -124,7 +150,7 @@ function CreateEmployeeForm() {
           <div className="input-wrapper">
             <label htmlFor="zipCode">Zip Code</label>
             <input
-              type="text"
+              type="number"
               id="zipCode"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
@@ -150,6 +176,7 @@ function CreateEmployeeForm() {
           SAVE
         </button>
         <Modal message="Employee Created !" isShowing={modalIsShowing} />
+        <p className={errorMessage}>Please complete all fields</p>
       </div>
     </div>
   )

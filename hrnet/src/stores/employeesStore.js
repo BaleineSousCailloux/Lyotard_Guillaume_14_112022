@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux'
 import { produce } from 'immer'
 
-// state
+// state initial
 const initialState = {
   employeesList: [
     {
@@ -13,7 +13,7 @@ const initialState = {
       dateStart: 489801600000,
       stateName: 'CO',
       street: 'Lombard',
-      zipCode: '102302',
+      zipCode: 102302,
     },
     {
       city: 'Miami',
@@ -24,7 +24,7 @@ const initialState = {
       dateStart: 722304000000,
       stateName: 'FL',
       street: 'Ocean Side',
-      zipCode: '2310',
+      zipCode: 2310,
     },
     {
       city: 'New York',
@@ -35,7 +35,7 @@ const initialState = {
       dateStart: 581126400000,
       stateName: 'GA',
       street: '5th Avenue',
-      zipCode: '53002',
+      zipCode: 53002,
     },
   ],
   error: null,
@@ -64,7 +64,6 @@ function employeesReducer(state = initialState, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case CREATE_EMPLOYEE: {
-        console.log(draft.employeesList)
         draft.employeesList.push(action.payload)
         return
       }
@@ -78,8 +77,6 @@ function employeesReducer(state = initialState, action) {
   })
 }
 
-// on utilise combineReducer pour faire
-// fonctionner plusieurs reducers ensemble comme l'ajout des transactions
 const reducer = combineReducers({
   employees: employeesReducer,
 })
@@ -88,10 +85,6 @@ const reducer = combineReducers({
 const reduxDevtools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-// on utilise le reducer créer avec combineReducers
-// pour initialiser le store
-// Pas besoin de passer de state initial
-// car chaque reducer à son propre state initial
 const store = createStore(reducer, reduxDevtools)
 
 export default store

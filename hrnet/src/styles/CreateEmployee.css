@@ -62,3 +62,7 @@ input {
     font-size: 1.2em;
     background-color: #ffffff;
 }
+.error-message {
+    color: red;
+    font-size: 1.2em;
+}

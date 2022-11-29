@@ -20,11 +20,6 @@ function EmployeesTable() {
     setPage(1)
     setLimit(dataKey)
   }
-  // let data = datas.filter((v, i) => {
-  //   const start = limit * (page - 1)
-  //   const end = start + limit
-  //   return i >= start && i < end
-  // })
   const getData = () => {
     let filteredData = Array.from(datas)
       .filter((row) =>
@@ -41,7 +36,7 @@ function EmployeesTable() {
       filteredData.sort((a, b) => {
         let x = a[sortColumn]
         let y = b[sortColumn]
-        if (['dateStart', 'dateBirth'].includes(sortColumn)) {
+        if (['dateStart', 'dateBirth', 'zipCode'].includes(sortColumn)) {
           return sortType === 'asc' ? x - y : y - x
         } else {
           return sortType === 'asc' ? x.localeCompare(y) : y.localeCompare(x)
