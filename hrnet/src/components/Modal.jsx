@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/Modal.css'
 import { useState, useEffect } from 'react'
 
 const Modal = ({ message, isShowing }) => {
@@ -7,52 +8,20 @@ const Modal = ({ message, isShowing }) => {
     setIsVisible(isShowing)
   }, [isShowing])
 
-  const modalwindowStyle = {
-    position: 'fixed',
-    top: '0',
-    right: '0',
-    bottom: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    overflow: 'auto',
-    zIndex: '1',
-    padding: '20px',
-    boxSizing: 'border-box',
-    backgroundColor: 'rgba(0,0,0,0.75)',
-    textAlign: 'center',
-  }
-
-  const modalcontainerStyle = {
-    display: 'flex',
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: 'fit-content',
-    padding: '0 1rem',
-    gap: '1rem',
-    top: '50%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderRadius: '5px',
-    border: 'solid grey 2px',
-  }
-
   return (
     <div>
       {isVisible ? (
-        <div style={modalwindowStyle}>
-          <div style={modalcontainerStyle}>
+        <div className="modal-window">
+          <div className="modal-container">
             <button
+              className="modal-button"
               onClick={() => {
                 setIsVisible(false)
               }}
             >
               X
             </button>
-            <p>{message}</p>
+            <p className="modal-message">{message}</p>
           </div>
         </div>
       ) : (

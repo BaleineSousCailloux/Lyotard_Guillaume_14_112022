@@ -21,22 +21,30 @@ function CreateEmployeeForm() {
   const [stateName, setStateName] = useState('CA')
   const [zipCode, setZipCode] = useState('25000')
   const [department, setDepartment] = useState('Sales')
+  const [modalIsShowing, setModalIsShowing] = useState(false)
 
   const submitForm = () => {
-    const dateStart = formatDate(startDate)
-    const dateBirth = formatDate(birthDate)
-    const newEmployee = {
-      firstName,
-      lastName,
-      dateBirth,
-      dateStart,
-      street,
-      stateName,
-      city,
-      zipCode,
-      department,
+    if (firstName && lastName && startDate && birthDate) {
+      const dateStart = startDate?.getTime()
+      const dateBirth = birthDate?.getTime()
+
+      console.log(dateStart)
+      const newEmployee = {
+        firstName,
+        lastName,
+        dateBirth,
+        dateStart,
+        street,
+        stateName,
+        city,
+        zipCode,
+        department,
+      }
+      updateEmployeesList(newEmployee)
+      setModalIsShowing(true)
+    } else {
+      //useState message d'erreur
     }
-    updateEmployeesList(newEmployee)
   }
 
   return (
@@ -141,7 +149,7 @@ function CreateEmployeeForm() {
         <button className="validate" title="save" onClick={submitForm}>
           SAVE
         </button>
-        <Modal message="Employee Created !" isShowing={true} />
+        <Modal message="Employee Created !" isShowing={modalIsShowing} />
       </div>
     </div>
   )
