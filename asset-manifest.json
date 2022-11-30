@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Lyotard_Guillaume_14_112022/static/css/main.247d9744.css",
-    "main.js": "/Lyotard_Guillaume_14_112022/static/js/main.57a72349.js",
+    "main.js": "/Lyotard_Guillaume_14_112022/static/js/main.9b29b257.js",
     "static/js/787.a603b31f.chunk.js": "/Lyotard_Guillaume_14_112022/static/js/787.a603b31f.chunk.js",
     "static/media/Team1.svg": "/Lyotard_Guillaume_14_112022/static/media/Team1.dee212f1cc8a90a72c4dfae22c39abde.svg",
     "static/media/Team2.svg": "/Lyotard_Guillaume_14_112022/static/media/Team2.bc3bfea7134c6765d4265bebe04ed829.svg",
@@ -9,11 +9,11 @@
     "static/media/Logo1.svg": "/Lyotard_Guillaume_14_112022/static/media/Logo1.e42701bf9496121c2dafecb26377c7c1.svg",
     "index.html": "/Lyotard_Guillaume_14_112022/index.html",
     "main.247d9744.css.map": "/Lyotard_Guillaume_14_112022/static/css/main.247d9744.css.map",
-    "main.57a72349.js.map": "/Lyotard_Guillaume_14_112022/static/js/main.57a72349.js.map",
+    "main.9b29b257.js.map": "/Lyotard_Guillaume_14_112022/static/js/main.9b29b257.js.map",
     "787.a603b31f.chunk.js.map": "/Lyotard_Guillaume_14_112022/static/js/787.a603b31f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.247d9744.css",
-    "static/js/main.57a72349.js"
+    "static/js/main.9b29b257.js"
   ]
 }
