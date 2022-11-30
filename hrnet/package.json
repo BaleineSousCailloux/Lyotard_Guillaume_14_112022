@@ -2,10 +2,13 @@
   "name": "hrnet",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://baleinesouscailloux.github.io/HRnet-React",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "core-js": "^3.26.1",
     "jsdoc": "^4.0.0",
     "modal-pkg": "^0.1.1",
     "prettier": "^2.7.1",
@@ -19,11 +22,12 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "rsuite": "^5.22.2",
-    "sematable": "^2.11.3",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,5 +50,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "gh-pages": "^4.0.0"
   }
 }
