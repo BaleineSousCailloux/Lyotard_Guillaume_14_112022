@@ -2,7 +2,7 @@
   "name": "hrnet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://baleinesouscailloux.github.io/HRnet-React",
+  "homepage": "https://baleinesouscailloux.github.io/Lyotard_Guillaume_14_112022",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.2.1",
     "core-js": "^3.26.1",
     "jsdoc": "^4.0.0",
-    "modal-pkg": "^0.1.1",
+    "modal-pkg": "^0.1.4",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

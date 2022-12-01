@@ -9,7 +9,6 @@ import Dropdown from 'react-dropdown'
 import '../styles/Dropdown.css'
 import { updateEmployeesList } from '../stores/employeesStore'
 import Modal from 'modal-pkg'
-import { useEffect } from 'react'
 
 function CreateEmployeeForm() {
   const [firstName, setFirstName] = useState('')
@@ -22,9 +21,11 @@ function CreateEmployeeForm() {
   const [zipCode, setZipCode] = useState('')
   const [department, setDepartment] = useState('')
   const [modalIsShowing, setModalIsShowing] = useState(false)
-  const [formOk, setFormOk] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('sr-only')
 
+  const [errorMessage, setErrorMessage] = useState('sr-only')
+  const closeModal = () => {
+    setModalIsShowing(false)
+  }
   const submitForm = () => {
     if (
       firstName &&
@@ -55,14 +56,6 @@ function CreateEmployeeForm() {
       }
       updateEmployeesList(newEmployee)
       setModalIsShowing(true)
-      setFormOk(true)
-    } else {
-      setFormOk(false)
-      setErrorMessage('error-message')
-    }
-  }
-  useEffect(() => {
-    if (formOk === true) {
       setFirstName('')
       setLastName('')
       setBirthDate('')
@@ -71,8 +64,11 @@ function CreateEmployeeForm() {
       setStateName('')
       setZipCode('')
       setDepartment('')
+    } else {
+      setErrorMessage('error-message')
     }
-  }, [formOk])
+  }
+
   return (
     <div className="form">
       <div className="form-private">
@@ -175,7 +171,11 @@ function CreateEmployeeForm() {
         <button className="validate" title="save" onClick={submitForm}>
           SAVE
         </button>
-        <Modal message="Employee Created !" isShowing={modalIsShowing} />
+        <Modal
+          message="Employee Created !"
+          onClose={closeModal}
+          isShowing={modalIsShowing}
+        />
         <p className={errorMessage}>Please complete all fields</p>
       </div>
     </div>

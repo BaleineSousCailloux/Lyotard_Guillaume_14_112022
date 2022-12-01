@@ -18,7 +18,7 @@ import store from '../stores/employeesStore.js'
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename="/Lyotard_Guillaume_14_112022">
         <Routes>
           <Route path="/" element={<CreateEmployee />} />
           <Route path="/current-employees" element={<CurrentEmployees />} />
