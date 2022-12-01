@@ -51,7 +51,7 @@ const errorDisplay = () => ({ type: ERROR })
 
 // actions
 export const updateEmployeesList = (newEmployee) => {
-  console.log(newEmployee)
+  // console.log(newEmployee)
   try {
     store.dispatch(createEmployee(newEmployee))
   } catch (error) {
