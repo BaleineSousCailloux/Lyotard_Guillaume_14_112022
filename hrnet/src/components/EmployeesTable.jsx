@@ -5,6 +5,10 @@ import { useState, useRef } from 'react'
 import SearchIcon from '@rsuite/icons/Search'
 import { formatDate } from '../utils/formatDate'
 
+/**
+ * Component EmployeeTable
+ * @returns current employees list
+ */
 function EmployeesTable() {
   const store = useStore()
   const searchInput = useRef(null)

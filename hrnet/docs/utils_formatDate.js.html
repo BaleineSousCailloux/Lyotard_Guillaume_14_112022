@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: router/App.jsx</title>
+    <title>JSDoc: Source: utils/formatDate.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: router/App.jsx</h1>
+    <h1 class="page-title">Source: utils/formatDate.js</h1>
 
     
 
@@ -27,38 +27,17 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @file is the router of the App
+ * Function formatDate
+ * @param {string} type timestamp
+ * @returns formated date
  */
-
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom'
-import CreateEmployee from '../pages/CreateEmployee'
-import CurrentEmployees from '../pages/CurrentEmployees'
-import ErrorPage from '../pages/ErrorPage'
-import { Provider } from 'react-redux'
-import store from '../stores/employeesStore.js'
-
-function App() {
-  return (
-    &lt;Provider store={store}>
-      &lt;Router basename="/Lyotard_Guillaume_14_112022">
-        &lt;Routes>
-          &lt;Route path="/" element={&lt;CreateEmployee />} />
-          &lt;Route path="/current-employees" element={&lt;CurrentEmployees />} />
-          &lt;Route path="/not-found" element={&lt;ErrorPage />} />
-          &lt;Route path="*" element={&lt;Navigate to="/not-found" />} />
-        &lt;/Routes>
-      &lt;/Router>
-    &lt;/Provider>
-  )
+export const formatDate = (str) => {
+  const strDate = new Date()
+  strDate.setTime(str)
+  const mnth = ('0' + (strDate.getMonth() + 1)).slice(-2)
+  const day = ('0' + strDate.getDate()).slice(-2)
+  return [mnth, day, strDate.getFullYear()].join('/')
 }
-
-export default App
 </code></pre>
         </article>
     </section>

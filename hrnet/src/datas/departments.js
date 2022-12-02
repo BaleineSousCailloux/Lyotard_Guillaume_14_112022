@@ -1,3 +1,7 @@
+/**
+ * array departments
+ * @returns the list of the departments
+ */
 const departments = [
   'Sales',
   'Marketing',

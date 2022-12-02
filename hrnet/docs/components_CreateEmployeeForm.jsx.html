@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/CreateEmployeeForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/CreateEmployeeForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import { useState } from 'react'
+import states from '../datas/states'
+import departments from '../datas/departments'
+import DatePicker from 'react-date-picker/dist/entry.nostyle'
+import '../styles/DatePicker.css'
+import '../styles/Calendar.css'
+import Dropdown from 'react-dropdown'
+import '../styles/Dropdown.css'
+import { updateEmployeesList } from '../stores/employeesStore'
+import Modal from 'modal-pkg'
+
+/**
+ * Component CreateEmployeeForm
+ * @returns the form to create a new employee
+ */
+function CreateEmployeeForm() {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [birthDate, setBirthDate] = useState('')
+  const [startDate, setStartDate] = useState(new Date())
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [stateName, setStateName] = useState('')
+  const [zipCode, setZipCode] = useState('')
+  const [department, setDepartment] = useState('')
+  const [modalIsShowing, setModalIsShowing] = useState(false)
+
+  const [errorMessage, setErrorMessage] = useState('sr-only')
+  const closeModal = () => {
+    setModalIsShowing(false)
+  }
+  const submitForm = () => {
+    if (
+      firstName &amp;&amp;
+      lastName &amp;&amp;
+      street &amp;&amp;
+      stateName &amp;&amp;
+      city &amp;&amp;
+      zipCode &amp;&amp;
+      department &amp;&amp;
+      startDate &amp;&amp;
+      birthDate
+    ) {
+      setErrorMessage('sr-only')
+
+      const dateStart = startDate?.getTime()
+      const dateBirth = birthDate?.getTime()
+
+      const newEmployee = {
+        firstName,
+        lastName,
+        dateBirth,
+        dateStart,
+        street,
+        stateName,
+        city,
+        zipCode,
+        department,
+      }
+      updateEmployeesList(newEmployee)
+      setModalIsShowing(true)
+      setFirstName('')
+      setLastName('')
+      setBirthDate('')
+      setStreet('')
+      setCity('')
+      setStateName('')
+      setZipCode('')
+      setDepartment('')
+    } else {
+      setErrorMessage('error-message')
+    }
+  }
+
+  return (
+    &lt;div className="form">
+      &lt;div className="form-private">
+        &lt;div className="form-private-identity">
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="firtName">First Name&lt;/label>
+            &lt;input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="lastName">Last Name&lt;/label>
+            &lt;input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="birthDate">Date of Birth&lt;/label>
+            &lt;DatePicker
+              type="date"
+              id="birthDate"
+              value={birthDate}
+              onChange={(e) => setBirthDate(e)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="startDate">Start Date&lt;/label>
+            &lt;DatePicker
+              type="date"
+              id="startDate"
+              value={startDate}
+              onChange={(e) => setStartDate(e)}
+            />
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="form-private-adress">
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="street">Street&lt;/label>
+            &lt;input
+              type="text"
+              id="street"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="city">City&lt;/label>
+            &lt;input
+              type="text"
+              id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="stateName">State&lt;/label>
+            &lt;Dropdown
+              options={states.map((e) => ({
+                label: e.name,
+                value: e.abbreviation,
+              }))}
+              placeholder="Select a State"
+              type="text"
+              id="stateName"
+              value={stateName}
+              onChange={(e) => setStateName(e.value)}
+            />
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="zipCode">Zip Code&lt;/label>
+            &lt;input
+              type="number"
+              id="zipCode"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+            />
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      &lt;div className="form-save">
+        &lt;div className="input-wrapper dept-dropdown">
+          &lt;label className="sr-only" htmlFor="department">
+            Department
+          &lt;/label>
+          &lt;Dropdown
+            options={departments}
+            placeholder="Select a Department"
+            type="text"
+            id="department"
+            value={department}
+            onChange={(e) => setDepartment(e.value)}
+          />
+        &lt;/div>
+        &lt;button className="validate" title="save" onClick={submitForm}>
+          SAVE
+        &lt;/button>
+        &lt;Modal
+          message="Employee Created !"
+          onClose={closeModal}
+          isShowing={modalIsShowing}
+        />
+        &lt;p className={errorMessage}>Please complete all fields&lt;/p>
+      &lt;/div>
+    &lt;/div>
+  )
+}
+
+export default CreateEmployeeForm
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CreateEmployee">CreateEmployee</a></li><li><a href="global.html#CreateEmployeeForm">CreateEmployeeForm</a></li><li><a href="global.html#CurrentEmployees">CurrentEmployees</a></li><li><a href="global.html#EmployeesTable">EmployeesTable</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#LogoNav">LogoNav</a></li><li><a href="global.html#Modal">Modal</a></li><li><a href="global.html#departments">departments</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#states">states</a></li><li><a href="global.html#updateEmployeesList">updateEmployeesList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 02 2022 18:45:24 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

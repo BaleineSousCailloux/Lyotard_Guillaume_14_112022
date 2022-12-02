@@ -1,7 +1,7 @@
 /**
  * @file is the launcher of the App React
  * @author Guillaume Lyotard
- * @see https://github.com/BaleineSousCailloux/Lyotard_Guillaume_14_112022
+ * @see https://baleinesouscailloux.github.io/Lyotard_Guillaume_14_112022/
  */
 
 import React from 'react'

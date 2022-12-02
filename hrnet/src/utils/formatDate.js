@@ -1,3 +1,8 @@
+/**
+ * Function formatDate
+ * @param {string} type timestamp
+ * @returns formated date
+ */
 export const formatDate = (str) => {
   const strDate = new Date()
   strDate.setTime(str)

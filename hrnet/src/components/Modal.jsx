@@ -3,6 +3,13 @@ import '../styles/Modal.css'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Component Modal not use because publish in npm for use as module
+ * @param {string} type message
+ * @param {bool} type boolean
+ * @param {func} type close modal function
+ * @returns modale of employee creation confirmation
+ */
 const Modal = ({ message, isShowing, onClose }) => {
   const [isVisible, setIsVisible] = useState(false)
   useEffect(() => {

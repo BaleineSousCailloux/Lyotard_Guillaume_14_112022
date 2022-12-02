@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: router/App.jsx</title>
+    <title>JSDoc: Source: pages/CurrentEmployees.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: router/App.jsx</h1>
+    <h1 class="page-title">Source: pages/CurrentEmployees.jsx</h1>
 
     
 
@@ -26,39 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @file is the router of the App
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import LogoNav from '../components/LogoNav'
+import backImage from '../assets/Team2.svg'
+import '../styles/CurrentEmployees.css'
+import EmployeesTable from '../components/EmployeesTable'
+
+/**
+ * Page CurrentEmployees
+ * @returns the current employees page and EmployeesTable
  */
-
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom'
-import CreateEmployee from '../pages/CreateEmployee'
-import CurrentEmployees from '../pages/CurrentEmployees'
-import ErrorPage from '../pages/ErrorPage'
-import { Provider } from 'react-redux'
-import store from '../stores/employeesStore.js'
-
-function App() {
+function CurrentEmployees() {
   return (
-    &lt;Provider store={store}>
-      &lt;Router basename="/Lyotard_Guillaume_14_112022">
-        &lt;Routes>
-          &lt;Route path="/" element={&lt;CreateEmployee />} />
-          &lt;Route path="/current-employees" element={&lt;CurrentEmployees />} />
-          &lt;Route path="/not-found" element={&lt;ErrorPage />} />
-          &lt;Route path="*" element={&lt;Navigate to="/not-found" />} />
-        &lt;/Routes>
-      &lt;/Router>
-    &lt;/Provider>
+    &lt;main className="bg-list">
+      &lt;img className="bg-list-image" src={backImage} alt="working together" />
+      &lt;LogoNav />
+      &lt;EmployeesTable />
+    &lt;/main>
   )
 }
 
-export default App
+export default CurrentEmployees
 </code></pre>
         </article>
     </section>

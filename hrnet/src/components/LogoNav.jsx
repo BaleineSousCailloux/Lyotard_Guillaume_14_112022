@@ -4,6 +4,10 @@ import logoW from '../assets/Logo2.svg'
 import { Link, NavLink } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
+/**
+ * Component LogoNav
+ * @returns Logo (link to home) and dynamic link for navigation between the two pages
+ */
 const LogoNav = () => {
   const currentPage = useLocation().pathname
 

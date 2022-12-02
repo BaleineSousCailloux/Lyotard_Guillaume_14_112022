@@ -1,7 +1,10 @@
 import { combineReducers, createStore } from 'redux'
 import { produce } from 'immer'
 
-// state initial
+/**
+ * Initial State
+ * @returns state initial or error
+ */
 const initialState = {
   employeesList: [
     {
@@ -46,10 +49,15 @@ const createEmployee = (newEmployee) => ({
   type: CREATE_EMPLOYEE,
   payload: newEmployee,
 })
+
 const ERROR = 'error'
 const errorDisplay = () => ({ type: ERROR })
 
-// actions
+/**
+ * Action updateEmployeesList
+ * @param {object} type newEmployee
+ * @returns add employee to the state or display an error
+ */
 export const updateEmployeesList = (newEmployee) => {
   // console.log(newEmployee)
   try {
@@ -59,7 +67,6 @@ export const updateEmployeesList = (newEmployee) => {
   }
 }
 
-// reducers
 function employeesReducer(state = initialState, action) {
   return produce(state, (draft) => {
     switch (action.type) {

@@ -2,6 +2,10 @@ import React from 'react'
 import logo from '../assets/Logo1.svg'
 import { NavLink } from 'react-router-dom'
 
+/**
+ * Page Error
+ * @returns information and link to home
+ */
 function ErrorPage() {
   return (
     <main className="main-nav">

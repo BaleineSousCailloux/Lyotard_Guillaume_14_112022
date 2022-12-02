@@ -4,6 +4,10 @@ import backImage from '../assets/Team2.svg'
 import '../styles/CurrentEmployees.css'
 import EmployeesTable from '../components/EmployeesTable'
 
+/**
+ * Page CurrentEmployees
+ * @returns the current employees page and EmployeesTable
+ */
 function CurrentEmployees() {
   return (
     <main className="bg-list">

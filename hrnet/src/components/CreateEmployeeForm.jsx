@@ -10,6 +10,10 @@ import '../styles/Dropdown.css'
 import { updateEmployeesList } from '../stores/employeesStore'
 import Modal from 'modal-pkg'
 
+/**
+ * Component CreateEmployeeForm
+ * @returns the form to create a new employee
+ */
 function CreateEmployeeForm() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
